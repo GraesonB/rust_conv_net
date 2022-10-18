@@ -55,9 +55,23 @@ fn array_from_test() {
 
  #[test] 
  fn compatible_dot_test() {
-    let array1 = Array2D::<i32>::ones((7267,3));
-    let array2 = Array2D::<i32>::ones((3,4534));
+    let array1 = Array2D::<i32>::ones((77,3));
+    let array2 = Array2D::<i32>::ones((3,34));
     let product = dot(array1, array2);
+ }
 
+ #[test]
+ fn transpose_test() {
+    let array = Array2D::from(vec![
+        vec![1,2],
+        vec![3,4],
+        vec![5,6]
+    ]);
+    let array_transpose = Array2D::from(vec![
+        vec![1,3,5],
+        vec![2,4,6]
+    ]);
+
+    assert_eq!(array.transpose().array, array_transpose.array);
  }
 
