@@ -14,7 +14,7 @@ pub fn dot<T>(a: Array2D<T>, b:Array2D<T>) -> Array2D<T>
     if a.shape.1 != b.shape.0 {
         panic!("[ERROR] Incomaptible matrix shapes")
     }
-    // initialize array to be returned
+    // initialize output array
     let mut product: Array2D<T> = Array2D::new((a.shape.0, b.shape.1));
     // i and j are for looping through each position in the product array
     for row in 0..product.shape.0 {

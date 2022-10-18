@@ -52,10 +52,13 @@ impl<T: Copy> Array2D<T> {
 
     pub fn transpose(&self) -> Self {
         let shape = (self.shape.1, self.shape.0);
+        // initialize output array
         let mut array: Array2D<T> = Array2D::new(shape);
-        for i in 0..self.shape.1 {
-            for j in 0..self.shape.0 {
-                array.array[i].push(self.array[j][i]);
+
+        for row in 0..self.shape.1 { // there will be as many rows as self has columns
+            for col in 0..self.shape.0 { // there will be as many columns as self has rows
+                // push self's column's as output's rows.
+                array.array[row].push(self.array[col][row]);
             }
         }
         array
