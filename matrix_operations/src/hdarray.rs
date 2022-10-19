@@ -1,9 +1,14 @@
+use std::ops::AddAssign;
+use num::{Num, Zero};
+
 pub struct Array2D<T> {
     pub shape: (usize, usize),
     pub array: Vec<Vec<T>>
 }
 
-impl<T: Copy> Array2D<T> {
+impl<T> Array2D<T> 
+    where T: Num + Zero + Copy + AddAssign
+    {
     pub fn new(shape: (usize, usize)) -> Self {
         let mut array: Vec<Vec<T>> = Vec::with_capacity(shape.0);
         for _ in 0..shape.0 {
@@ -62,7 +67,32 @@ impl<T: Copy> Array2D<T> {
             }
         }
         array
+    }
 
+    pub fn sum_vertical(&self) -> Self {
+        let shape: (usize, usize) = (1, self.shape.1);
+        let mut array = Array2D::new(shape);
+        for col in 0..self.shape.0 {
+            let mut sum: T = T::zero();
+            for row in 0..self.shape.1 {
+                sum += self.array[row][col];
+            }
+            array.array[0].push(sum);
+        }
+        array
+    }
+
+    pub fn sum_horizontal(&self) -> Self {
+        let shape: (usize, usize) = (self.shape.0, 1);
+        let mut array = Array2D::new(shape);
+        for row in 0..self.shape.1 {
+            let mut sum: T = T::zero();
+            for col in 0..self.shape.0 {
+                sum += self.array[row][col];
+            }
+            array.array[row].push(sum);
+        }
+        array
     }
 
     pub fn size(&self) -> usize {

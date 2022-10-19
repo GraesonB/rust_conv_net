@@ -50,14 +50,14 @@ fn array_from_test() {
         vec![3,4],
         vec![4,3]
     ]);
-    let product = dot(array1, array2);
+    dot(array1, array2);
  }
 
  #[test] 
  fn compatible_dot_test() {
     let array1 = Array2D::<i32>::ones((77,3));
     let array2 = Array2D::<i32>::ones((3,34));
-    let product = dot(array1, array2);
+    dot(array1, array2);
  }
 
  #[test]
@@ -71,7 +71,22 @@ fn array_from_test() {
         vec![1,3,5],
         vec![2,4,6]
     ]);
-
     assert_eq!(array.transpose().array, array_transpose.array);
  }
 
+ #[test]
+ fn sum_vertical_test() {
+    let array: Array2D<i32> = Array2D::<i32>::ones((3,3));
+    let test: Vec<Vec<i32>> = vec![vec![3,3,3]];
+    assert_eq!(array.sum_vertical().array, test);
+ }
+
+ #[test]
+ fn sum_horizontal_test() {
+    let array: Array2D<i32> = Array2D::<i32>::ones((3,3));
+    let test: Vec<Vec<i32>> = vec![
+        vec![3],
+        vec![3],
+        vec![3]];
+    assert_eq!(array.sum_horizontal().array, test);
+ }
