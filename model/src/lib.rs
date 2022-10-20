@@ -1,14 +1,11 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
-
 #[cfg(test)]
-mod tests {
-    use super::*;
+mod tests;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+
+pub struct ModelHParams{
+    learning_rate : f32,
+    epochs : i32,
+    batch_size : i32,
+    beta_1 : f32, // commonly 0.9
+    beta_2 : f32, // commonly 0.999
 }
