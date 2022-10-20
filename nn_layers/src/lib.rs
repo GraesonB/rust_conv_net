@@ -11,6 +11,6 @@ pub trait Backward {
 }
 
 pub trait UpdateWeights {
-    fn update_weights(model_hparams: ModelHyperParams);
+    fn update_weights(model_hparams: ModelHParams);
 }
 
