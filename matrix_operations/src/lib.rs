@@ -7,7 +7,6 @@ use num::{Num, Zero};
 
 pub use self::hdarray::Array2D;
 
-
 pub fn dot<T>(a: Array2D<T>, b:Array2D<T>) -> Array2D<T> 
     where T: Num + AddAssign + Copy + Zero
 {
