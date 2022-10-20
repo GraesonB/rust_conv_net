@@ -1,6 +1,7 @@
 [workspace]
-
 members = [
     "model",
     "matrix_operations",
+    "nn_layers",
+    "conv_network"
 ]
