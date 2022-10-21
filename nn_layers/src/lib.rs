@@ -1,13 +1,16 @@
 #[cfg(test)]
 mod tests;
+mod fully_connected;
+use num::{Num, Zero};
 
-use mat_ops::*;
+use matrix_operations::*;
+use model::*;
 
-pub trait Forward {
-    fn forward(input: Array2D) -> Array2D;
+pub trait Forward<T: Num> {
+    fn forward(input: Array2D<T>) -> Array2D<T>;
 }
-pub trait Backward {
-    fn backward(input: Array2D) -> Array2D;
+pub trait Backward<T: Num> {
+    fn backward(input: Array2D<T>) -> Array2D<T>;
 }
 
 pub trait UpdateWeights {

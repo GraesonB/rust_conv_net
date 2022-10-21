@@ -6,4 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-mat_ops = { path = "../matrix_operations" }
+matrix_operations = { path = "../matrix_operations" }
+model = { path = "../model" }
+num = "0.4.0"
